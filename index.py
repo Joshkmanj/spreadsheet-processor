@@ -1,15 +1,25 @@
-# Import the load_workbook and Workbook classes from openpyxl
+# Imports from openpyxl
 from openpyxl import load_workbook, Workbook
 
-# Define the path to the existing Excel file and the path where the new file will be saved
-existing_file_path = 'data/input/existing_file.xlsx'
-new_file_path = 'data/output/new_file.xlsx'
+# Define the paths
+existing_file_path = 'data/input/test_input.xlsx'
+new_file_path = 'data/output/test_output.xlsx'
 
-# Load the existing workbook
+# load workbook & get active worksheet
 wb = load_workbook(filename=existing_file_path)
-
-# Get the active worksheet from the workbook
 ws = wb.active
+
+
+# ----------< Tasks begin >------------
+
+# If the first column of the first row starts with "Payout Report", copy the first row
+if ws['A1'].value.startswith("Payout Report"):
+    # Copy the text from the first column of the first row
+    payout_report = ws['A1'].value
+    print("Payout Report:", payout_report)
+
+
+# ----------< // Tasks End >------------
 
 # Save the workbook to a new file
 wb.save(new_file_path)
