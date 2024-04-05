@@ -13,8 +13,18 @@ ws = wb.active
 # --------------------<  T a s k s  b e g i n  >----------------------
 # Variables
 spreadsheet_title = None
-columns_to_keep = [{'col':'a','title':'Date'},{'col':'c','title':'Description'},{'col':'d','title':'Net Donation'},{'col':'f','title':'Stripe Fee'},{'col':'g','title':'Platform Fee'},{'col':'h','title':'Total Gross Donation'},{'col':'q','title':'Email'},{'col':'r','title':'Event'},{'col':'x','title':'Source Title'}]
-# columns_to_hide = [b,e,i,j,k,l,m,n,o,p,q,s,t,u,v,w] # Not sure if I'll need this one
+max_column = ws.max_column
+columns_to_keep = {
+    'A':'Date',
+    'C':'Description',
+    'D':'Net Donation',
+    'F':'Stripe Fee',
+    'G':'Platform Fee',
+    'H':'Total Gross Donation',
+    'Q':'Email',
+    'R':'Event',
+    'X':'Source Title'
+    }
 
 # 1. Get title and remove from first row
 if ws['A1'].value.startswith("Payout Report"): # *** In python, if statements are declared without parentheses and with a colon at the end, code block to be executed is indented instead of within brackets
@@ -28,13 +38,17 @@ ws.delete_rows(1)
 
 # 2. Hide columns except those that we want to keep
 
-max_column = ws.max_column
+# Convert to uppercase
+columns_to_keep = {k.upper():v for k,v in columns_to_keep.items()}
+# columns_to_keep = {k:v.upper() for k,v in columns_to_keep.items()}
+print("Columns to keep", columns_to_keep)
 
 # Loop through each column in the worksheet
 for col in range(1, max_column + 1):
-    # Convert column number to letter
     column_letter = get_column_letter(col)
-    print(f"Column {col} has the letter {column_letter} with value {ws[column_letter + '1'].value}")
+    
+    if column_letter not in columns_to_keep.keys():
+        ws.column_dimensions[column_letter].hidden = True
 
 
 
