@@ -22,9 +22,24 @@ def main():
         'R':'Event',
         'X':'Source Title'
         }
+    spreadsheet_title = None
 
 
-    openpyxl_operations(existing_file_path, new_file_path, columns_to_keep)
+    # First open the workbook with pandas
+    # Then remove first line, create a list of objects and sort through them
+    # Analyze the data
+        # perform logic
+        # sum up the revenue columns
+        # save the data
+    # Use openpyxl to open the file
+        # hide columns that aren't needed
+        # append the title to the end of the sheet
+        # save the file
+    
+    
+
+
+    # openpyxl_operations(existing_file_path, new_file_path, columns_to_keep)
 
 
 
@@ -48,7 +63,6 @@ def main():
 
 
 def openpyxl_operations(existing_file_path, new_file_path, columns_to_keep):
-    spreadsheet_title = None
     
     # Load worksheet
     wb = load_workbook(filename=existing_file_path)
@@ -93,6 +107,6 @@ def openpyxl_operations(existing_file_path, new_file_path, columns_to_keep):
 
 
 if __name__ == "__main__":
-    print("Running index.py")
+    print("\nRunning index.py")
     main()
-    print("Finished running index.py")
+    print("Finished running index.py\n")
