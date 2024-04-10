@@ -1,4 +1,5 @@
 # Imports from openpyxl
+import pandas as pd
 from openpyxl import load_workbook, Workbook # *** In python, imports are declared with the structure "from <module> import <class>"
 from openpyxl.utils import get_column_letter
 
@@ -6,7 +7,9 @@ from openpyxl.utils import get_column_letter
 # define a main function
 def main():
     # Define the paths
-    existing_file_path = 'data/input/test_input.xlsx' # *** In python, variables are dynamically typed and do not require a "const" or "let" keyword
+    # existing_file_path = 'data/input/test_input.xlsx'
+    # existing_file_path = 'data/input/test_input_minimized.xlsx'
+    existing_file_path = 'data/input/test_data_table.xlsx'
     new_file_path = 'data/output/test_output.xlsx'
 
 
@@ -18,14 +21,18 @@ def main():
         'F':'Stripe Fee',
         'G':'Platform Fee',
         'H':'Total Gross Donation',
-        'Q':'Email',
         'R':'Event',
         'X':'Source Title'
         }
     spreadsheet_title = None
 
 
-    # First open the workbook with pandas
+    # Open the excel sheet with pandas
+    df_donations = pd.read_excel(existing_file_path)
+    
+    print("donations:", df_donations)
+    
+    
     # Then remove first line, create a list of objects and sort through them
     # Analyze the data
         # perform logic
@@ -46,17 +53,9 @@ def main():
 
 
 
-    # # Last. Append title to the end of sheet with buffer space
-    # ws.append([])
-    # ws.append([])
-    # ws.append([spreadsheet_title])
-
 
     # Save the workbook to a new file
-    # wb.save(new_file_path)
-
-    # *** In python, instead of console logs, use "print(<message>)"
-    print("Workbook saved to", new_file_path)
+    # print("Workbook saved to", new_file_path)
 
 
 
