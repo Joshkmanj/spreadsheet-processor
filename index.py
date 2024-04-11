@@ -30,7 +30,10 @@ def main():
     # Open the excel sheet with pandas
     df_donations = pd.read_excel(existing_file_path)
     
-    print("donations:", df_donations)
+    # Sort the data by Description, then Event, then Source Title
+    df_donations = df_donations.sort_values(by=['Source Title','Event','Description'])
+    
+    # Create a dictionary object to organize and store the sum of the revenue columns
     
     
     # Then remove first line, create a list of objects and sort through them
