@@ -7,10 +7,10 @@ from openpyxl.utils import get_column_letter
 # define a main function
 def main():
     # Define the paths
-    # existing_file_path = 'data/input/test_input.xlsx'
-    # existing_file_path = 'data/input/test_input_minimized.xlsx'
-    existing_file_path = 'data/input/test_data_table.xlsx'
-    new_file_path = 'data/output/test_output.xlsx'
+    # existing_file_path = '../data/input/test_input.xlsx'
+    # existing_file_path = '../data/input/test_input_minimized.xlsx'
+    existing_file_path = '../data/input/test_data_table.xlsx'
+    new_file_path = '../data/output/test_output.xlsx'
 
 
     # Variables
